@@ -374,7 +374,6 @@ public class ACTabScrollView: UIView, UIScrollViewDelegate {
                             })
                         } else {
                             tab.alpha = alpha
-                                let label = self.cachedPageTabs[i] as? UILabel
                                 label?.font = UIFont.systemFont(ofSize: size)
                         }
                     }
