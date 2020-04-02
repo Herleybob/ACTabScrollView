@@ -365,10 +365,10 @@ public class ACTabScrollView: UIView, UIScrollViewDelegate {
                     }
                     
                     if let tab = self.cachedPageTabs[i] {
+                        let label = self.cachedPageTabs[i] as? UILabel
                         if (animated) {
                             UIView.animateWithDuration(NSTimeInterval(0.5), animations: { () in
                                 tab.alpha = alpha
-                                let label = self.cachedPageTabs[i] as? UILabel
                                 label?.font = UIFont.systemFont(ofSize: size)
                                 return
                             })
