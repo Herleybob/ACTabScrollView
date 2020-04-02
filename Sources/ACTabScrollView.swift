@@ -106,6 +106,8 @@ public class ACTabScrollView: UIView, UIScrollViewDelegate {
         contentSectionScrollView.showsHorizontalScrollIndicator = false
         contentSectionScrollView.showsVerticalScrollIndicator = false
         contentSectionScrollView.delegate = self
+        
+        contentSectionScrollView.isHidden = true
     }
     
     override public func layoutSubviews() {
@@ -348,24 +350,32 @@ public class ACTabScrollView: UIView, UIScrollViewDelegate {
             if (numberOfPages != 0) {
                 for i in 0 ..< numberOfPages {
                     var alpha: CGFloat = 1.0
+                    var size: CGFloat = 22
                     
                     let offset = abs(i - pageIndex)
                     if (offset > 1) {
                         alpha = 0.2
+                        size = 14
                     } else if (offset > 0) {
                         alpha = 0.4
+                        size = 16
                     } else {
                         alpha = 1.0
+                        size = 22
                     }
                     
                     if let tab = self.cachedPageTabs[i] {
                         if (animated) {
                             UIView.animateWithDuration(NSTimeInterval(0.5), animations: { () in
                                 tab.alpha = alpha
+                                let label = self.cachedPageTabs[i] as? UILabel
+                                label?.font = UIFont.systemFont(ofSize: size)
                                 return
                             })
                         } else {
                             tab.alpha = alpha
+                                let label = self.cachedPageTabs[i] as? UILabel
+                                label?.font = UIFont.systemFont(ofSize: size)
                         }
                     }
                 }
